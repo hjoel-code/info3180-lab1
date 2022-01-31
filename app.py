@@ -5,6 +5,7 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
+from distutils.log import debug
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -21,5 +22,9 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 
+@app.route('/')
+def home():
+    return 'My home page'
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host="localhost", port=8111)
